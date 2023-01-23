@@ -22,15 +22,14 @@ This app will allow a user to select a speaker and generate a speech in that spe
 
 - Allow user to pick a speech writer and describe the speech they want
 - Establish small selection of tested speech writers
+- Provide ability to download audio
+
+### Secondary
+
 - Establish user profiles
 - Store all data for users, allow to be accessed later
 - Allow user to download products
 - Provide built-in sharing
-- Manage FakeYou audio length restrictions effectively
-
-
-### Secondary
-
 - Integrate OpenAI's moderation suite to ensure safe and appropriate use of app
 - Test and add more speech writers
 - Allow past prompts to be used to generate new ones
@@ -147,12 +146,15 @@ User will be able to extend past speeches
 - splice new speech segment wav onto the back of the previous
 
 
+### 13Feb23 (T-2)
+- **Deployment**
+
+
 ### 14Feb23 (T-1)
 
 User will have a more aesthetic and streamlined experience
 
 - Integrate UX/UI design and use flow
-- **Deployment**
 
 
 ### 15Feb23 (T)
