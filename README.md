@@ -31,6 +31,7 @@ This app will allow a user to select a speaker and generate a speech in that spe
 - Allow user to download products
 - Provide built-in sharing
 - Integrate OpenAI's moderation suite to ensure safe and appropriate use of app
+- Greet user upon login with a personalized message that references their last use case, ie: "Welcome back, Alex, did your dad enjoy his birthday greeting?"
 - Test and add more speech writers
 - Allow past prompts to be used to generate new ones
 - Provide automatic wav splicing for extending a prior speech
@@ -38,10 +39,9 @@ This app will allow a user to select a speaker and generate a speech in that spe
 
 ### Long-Term
 
-- Make sharing more robust; use OAuth for social media sharing
+- Make sharing more robust; integrate social media sharing
 - Establish free options and paid options; could be package based, as-a-service, or combination
 - Integrate reCaptcha or similar to prevent overload
-- Greet user upon login with a personalized message that references their last use case, ie: "Welcome back, ALex, did your dad enjoy his birthday greeting?"
 - Format app to microservices
 - Ever expand available speech writers
 
