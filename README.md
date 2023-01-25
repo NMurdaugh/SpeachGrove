@@ -11,7 +11,7 @@ This app will allow a user to select a speaker and generate a speech in that spe
 
 ### Utilizations
 
-- OpenAi's ChatGPT DaVinci model via either OpenAi's native API or the open-source Chronology library
+- OpenAi's GPT-3 DaVinci model via either OpenAi's native API or the open-source Chronology library
 - FakeYou via the fakeyou.py open-source library.
 
 
