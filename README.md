@@ -67,7 +67,6 @@ This app will allow a user to select a speaker and generate a speech in that spe
 
 - datetime
 - id
-- associated user
 - associated response
 - speaker
 - speaker token
@@ -76,6 +75,7 @@ This app will allow a user to select a speaker and generate a speech in that spe
 
 **Later**
 
+- associated user
 - original request ID (if applicable)
 - flagged: boulean
 
