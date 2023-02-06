@@ -13,7 +13,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 response = openai.Completion.create(
-    model="text-davinci-003", prompt="In the voice of Obama, give a ten second greeting to Nick.", temperature=0.7, max_tokens=500)
+    model="text-davinci-003", prompt="In the voice of Obama, give a 30 second greeting to Nick.", temperature=0.7, max_tokens=500)
 
 response_text = response['choices'][0]['text']
 print(response_text)
@@ -28,6 +28,7 @@ voice_tokens = {
     'FDR': 'TM:jh0bts33pn7x',
     'Teddy': 'TM:pn9edma33t2j',
 }
+
 
 myuuid = str(uuid.uuid4())
 text = response_text
@@ -44,11 +45,21 @@ head_get = {
     'Accept': 'application/json',
 }
 
-response3 = requests.post(
+head_login = {'accept': '*/*'}
+
+fy_username = os.getenv('FAKEYOU_USERNAME')
+fy_password = os.getenv('FAKEYOU_PASSWORD')
+
+login_payload = {"username_or_email": fy_username, "password": fy_password}
+
+requests.post('https://api.fakeyou.com/login',
+              headers=head_login, json=login_payload)
+
+post_response = requests.post(
     'https://api.fakeyou.com/tts/inference', headers=heads_post, json=payload)
 
-pprint(response3.json())
-job_token = response3.json()['inference_job_token']
+pprint(post_response.json())
+job_token = post_response.json()['inference_job_token']
 
 
 def status_checker(token):
