@@ -3,6 +3,7 @@ import openai
 import os
 import uuid
 import requests
+import time
 
 
 def text_generator(speaker, prompt):
@@ -34,9 +35,9 @@ def voice_generator(token, text):
         'Accept': 'application/json',
         'Content-Type': 'application/json',
     }
-    head_get = {
-        'Accept': 'application/json',
-    }
+    # head_get = {
+    #     'Accept': 'application/json',
+    # }
 
     # requests.post('https://api.fakeyou.com/login',
     #               headers=head_login, json=login_payload)
