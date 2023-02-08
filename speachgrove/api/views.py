@@ -15,10 +15,10 @@ def api_cycle(request):
         'Teddy': 'TM:pn9edma33t2j',
     }
 
-    speaker = request.POST['speaker_name']
+    speaker = request.POST['speakerName']
 
     r = Request.objects.create(
-        request_text=request.POST['request_text'], speaker_name=speaker, speaker_token=voice_tokens[speaker])
+        request_text=request.POST['requestText'], speaker_name=speaker, speaker_token=voice_tokens[speaker])
 
     chat = ChatResponse.objects.create(
         response_text=text_generator(r.speaker_name, r.request_text), request=r.id,

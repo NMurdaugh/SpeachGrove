@@ -19,7 +19,7 @@ from django.shortcuts import render
 
 
 urlpatterns = [
-    path('', 'home/', lambda request: render(request, 'home.html')),
+    path('', lambda request: render(request, 'home.html')),
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
 
