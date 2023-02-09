@@ -3,15 +3,16 @@ import openai
 import os
 import uuid
 import requests
+import time
 
 
-def text_generator(speaker, prompt):
+def text_generator(speaker, user_prompt):
     load_dotenv('.env')
 
     openai.api_key = os.getenv("OPENAI_API_KEY")
 
     response = openai.Completion.create(
-        model="text-davinci-003", prompt="In the voice of Obama, give a 30 second greeting to Nick.", temperature=0.7, max_tokens=500)
+        model="text-davinci-003", prompt=f'In the voice of {speaker}, give me a response based on the following prompt: {user_prompt}.', temperature=0.7, max_tokens=500)
 
     response_text = response['choices'][0]['text']
     print(response_text)
@@ -34,9 +35,9 @@ def voice_generator(token, text):
         'Accept': 'application/json',
         'Content-Type': 'application/json',
     }
-    head_get = {
-        'Accept': 'application/json',
-    }
+    # head_get = {
+    #     'Accept': 'application/json',
+    # }
 
     # requests.post('https://api.fakeyou.com/login',
     #               headers=head_login, json=login_payload)

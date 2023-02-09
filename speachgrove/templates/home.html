@@ -1,12 +1,29 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script src="{% static 'js/app.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <title>Document</title>
 </head>
 <body>
-    
+    {% csrf_token %}
+    <div id="app">
+        <div>
+            <select v-model="speakerName">
+              <option selected disabled value="">Select a speech writer</option>
+              <option value="Obama">Barrack Obama</option>
+            </select>
+          </div>
+        <span>What would you like them to write about? More specificity means a better speech.</span><input type="text" v-model="userRequestText"><br>
+        <button name="create" @click="speechWriter()">Write Speech</button><br><br>
+        <p>[[ speakerName ]]</p><br>
+        <p>[[ ttsData ]]</p>
+    </div>
 </body>
 </html>
