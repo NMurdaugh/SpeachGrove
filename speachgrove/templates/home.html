@@ -16,12 +16,14 @@
     <div id="app">
         <div>
             <select v-model="speakerName">
-              <option disabled value="">Select a speech writer</option>
+              <option selected disabled value="">Select a speech writer</option>
               <option value="Obama">Barrack Obama</option>
             </select>
           </div>
         <span>What would you like them to write about? More specificity means a better speech.</span><input type="text" v-model="userRequestText"><br>
-        <button name="create" @click="speechWriter()">Write Speech</button>
+        <button name="create" @click="speechWriter()">Write Speech</button><br><br>
+        <p>[[ speakerName ]]</p><br>
+        <p>[[ ttsData ]]</p>
     </div>
 </body>
 </html>
