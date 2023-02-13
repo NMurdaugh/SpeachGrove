@@ -39,16 +39,21 @@ def voice_generator(token, text):
     # head_get = {
     #     'Accept': 'application/json',
     # }
+    session = requests.session()
 
-    requests.session().post('https://api.fakeyou.com/login',
-                            headers=head_login, json=login_payload)
+    login = session.post('https://api.fakeyou.com/login',
+                         headers=head_login, json=login_payload)
+    print(login.status_code)
+    print(login.json())
+    session_json = session.get('https://api.fakeyou.com/session').json()
+    print(session_json)
 
-    post_response = requests.session().post(
+    post_response = session.post(
         'https://api.fakeyou.com/tts/inference', headers=heads_post, json=payload)
     job_token = post_response.json()['inference_job_token']
 
     def status_checker(token):
-        poll_response = requests.session().get(
+        poll_response = session.get(
             f'https://api.fakeyou.com/tts/job/{token}', headers=heads_post)
         status = poll_response.json()['state']['status']
         progress = ['pending', 'started']
