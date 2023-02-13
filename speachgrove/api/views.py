@@ -6,13 +6,10 @@ from speechwriter.speech_generator import text_generator, voice_generator
 
 @api_view(['POST'])
 def api_cycle(request):
-    voice_tokens = {
-        'Obama': 'TM:58vtv7x9f32c',
-        'Gandhi': 'TM:cvw5qkye9y22',
-        'Churchill': 'TM:3na2hzvbfqn7',
-        'Kennedy': 'TM:a9pmkvtg2p6b',
-        'FDR': 'TM:jh0bts33pn7x',
-        'Teddy': 'TM:pn9edma33t2j',
+    voice_data = {
+        'Obama': ['Barack Obama', 'TM:58vtv7x9f32c'],
+        'Deniro': ['Robert DeNiro', 'TM:msds8ma95f2f'],
+        'Hank': ['Hank Hill', 'TM:63y8yd94ndds'],
     }
     print(request.body)
     print(request.data)
@@ -20,19 +17,21 @@ def api_cycle(request):
         print(key)
     print(request.POST.keys())
     speaker = request.data['speakerName']
+    speaker_name_full = voice_data[speaker][0]
+    token = voice_data[speaker][1]
 
     r = Request.objects.create(
-        request_text=request.data['userRequestText'], speaker_name=speaker, speaker_token=voice_tokens[speaker])
+        request_text=request.data['userRequestText'], speaker_name=speaker_name_full, speaker_token=token)
 
     chat = ChatResponse.objects.create(
         response_text=text_generator(r.speaker_name, r.request_text), request=r,
     )
 
     voice = VoiceResponse.objects.create(
-        response_audio_url=voice_generator(voice_tokens[speaker], chat.response_text), chat_response=chat
+        response_audio_url=voice_generator(token, chat.response_text), chat_response=chat
     )
     data = {
-        'speaker': speaker,
+        'speaker': speaker_name_full,
         'audio_url': voice.response_audio_url,
         'text': chat.response_text,
     }
