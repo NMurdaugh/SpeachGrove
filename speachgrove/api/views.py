@@ -10,10 +10,6 @@ def api_cycle(request):
         'Obama': ['Barack Obama', 'TM:58vtv7x9f32c'],
         'Deniro': ['Robert DeNiro', 'TM:msds8ma95f2f'],
         'Hank': ['Hank Hill', 'TM:63y8yd94ndds'],
-        'Churchill': 'TM:3na2hzvbfqn7',
-        'Kennedy': 'TM:a9pmkvtg2p6b',
-        'FDR': 'TM:jh0bts33pn7x',
-        'Teddy': 'TM:pn9edma33t2j',
     }
     print(request.body)
     print(request.data)
@@ -35,7 +31,7 @@ def api_cycle(request):
         response_audio_url=voice_generator(token, chat.response_text), chat_response=chat
     )
     data = {
-        'speaker': speaker,
+        'speaker': speaker_name_full,
         'audio_url': voice.response_audio_url,
         'text': chat.response_text,
     }
